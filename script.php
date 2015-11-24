@@ -9,11 +9,6 @@
 curl -F "url=https://domain.com/script.php" -F "certificate=@/etc/apache2/ssl/apache.crt" https://api.telegram.org/bot<MYTOKENHERE>/setWebhook
 */
 
-/* FOR DEBUG ONLY
-https://api.telegram.org/bot150111456:AAGmfcs4QRteRl2_UCf0oN7k5yUdGJu0erA/setWebhook // Disable WebHook
-https://api.telegram.org/bot150111456:AAGmfcs4QRteRl2_UCf0oN7k5yUdGJu0erA/getUpdates // Get Updates Manually
-*/
-
 /*COMMANDS
 
 Some of these commands relate directly to the 3xA-Gaming Community.
@@ -31,6 +26,7 @@ info - About 3xA
 joint - Pass a joint to random or specific user
 joke - Random joke
 ping - (admin,all) - Ping services, Ping the admin for a specific service, Ping all users in the group
+radio - Radio stream links
 servers - Display 3xA game server
 start - Start events
 stop - Stop events
@@ -49,7 +45,6 @@ $update = json_decode($update, TRUE);
 $isValid = True;
 $isGroup = False;
 $isPrivate = False;
-$first = True;
 
 $chatId = $update["message"]["chat"]["id"];
 $fromUser = $update["message"]["from"]["username"];
@@ -115,6 +110,9 @@ if ($isPrivate || $isGroup) {
 			);
 			$r_joint = array_rand($jointMsgs,1);
 			sendMessage($chatId,$jointMsgs[$r_joint], True);
+			break;
+		case "/radio";
+			sendMessage("Radio configuring, please wait...", True);
 			break;
 		case "/servers":
 			sendMessage($chatId, "Servers not configured, well for you...", True);
