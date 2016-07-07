@@ -36,7 +36,7 @@ slap - Slap specific user
 
 */
 
-$botToken = "<MYTOKENHERE>";
+$botToken = "242491096:AAH_sNYQs7medTN3oVlZuy_hVcIVyYEvzXA";
 $website = "https://api.telegram.org/bot".$botToken;
  
 $update = file_get_contents('php://input');
